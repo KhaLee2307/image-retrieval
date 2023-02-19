@@ -6,8 +6,8 @@ from PIL import Image
 import torch
 import faiss
 
-from util.feature_extraction import feature_extractor, extract_features
-from util.dataloader import get_transformation
+from src.feature_extraction import MyVGG16, RGBHistogram
+from src.dataloader import get_transformation
 
 ACCEPTED_IMAGE_EXTS = ['.jpg', '.png']
 
@@ -26,15 +26,14 @@ def main():
     parser.add_argument("--image_root", required=False, type=str, default = './data')
     parser.add_argument("--faiss_bin_path", required=False, type=str, default='building.index.bin')
     parser.add_argument("--device", required=False, type=str, default='cuda:0')
-    parser.add_argument("--test_image_path", required=False, type=str, default='.\worcester_000001.jpg')
+    parser.add_argument("--test_image_path", required=False, type=str, default='./data/worcester_000054.jpg')
     parser.add_argument("--top_k", required=False, type=int, default=11)
 
 
     args = parser.parse_args()
     device = torch.device(args.device)
 
-    model = feature_extractor()
-    model = model.to(device)
+    extractor = MyVGG16(device)
 
     img_list = get_image_list(args.image_root)
 
@@ -42,9 +41,10 @@ def main():
 
     test_image_path = pathlib.Path(args.test_image_path)
     pil_image = Image.open(test_image_path)
+    pil_image = pil_image.convert('RGB')
     image_tensor = transform(pil_image)
     image_tensor = image_tensor.unsqueeze(0).to(device)
-    feat = extract_features(model, image_tensor)
+    feat = extractor.extract_features(image_tensor)
 
     indexer = faiss.read_index(args.faiss_bin_path)
     

@@ -1,7 +1,7 @@
 from PIL import Image
 import pathlib
-
 from torchvision import transforms
+
 from torch.utils.data import Dataset
 
 ACCEPTED_IMAGE_EXTS = ['.jpg', '.png']
@@ -22,12 +22,9 @@ def get_transformation():
             transforms.Resize((256, 256), interpolation = transforms.InterpolationMode.BILINEAR),
             transforms.CenterCrop((224, 224)),
             transforms.ToTensor(),
-            transforms.Normalize(mean=[0.48235, 0.45882, 0.40784], 
-                                std=[0.00392156862745098, 0.00392156862745098, 0.00392156862745098]),
         ])
 
     return transform
-
 
 class MyDataLoader(Dataset):
 
@@ -46,4 +43,6 @@ class MyDataLoader(Dataset):
     def __getitem__(self, index):
         _img = self.image_list[index]
         _img = Image.open(_img)
+        # Chuyển đổi hình ảnh sang không gian màu RGB
+        _img = _img.convert("RGB")
         return self.transform(_img), str(self.image_list[index])

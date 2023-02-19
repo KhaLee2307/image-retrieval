@@ -4,9 +4,9 @@ import faiss
 import torch
 from torch.utils.data import DataLoader, SequentialSampler
 
-from util.feature_extraction import feature_extractor, extract_features
-from util.indexing import get_faiss_indexer
-from util.dataloader import MyDataLoader
+from src.feature_extraction import MyVGG16, RGBHistogram
+from src.indexing import get_faiss_indexer
+from src.dataloader import MyDataLoader
 
 
 def main():
@@ -20,17 +20,16 @@ def main():
     device = torch.device(args.device)
     batch_size = args.batch_size
 
-    model = feature_extractor()
-    model = model.to(device)
+    extractor = MyVGG16(device)
 
     dataset = MyDataLoader(args.image_root)
     sampler = SequentialSampler(dataset)
     dataloader = DataLoader(dataset,batch_size=batch_size,sampler=sampler)
 
-    indexer = get_faiss_indexer()
+    indexer = get_faiss_indexer(extractor.shape)
     for indices, (images, image_paths) in enumerate(dataloader):
         images = images.to(device)
-        features = extract_features(model, images)
+        features = extractor.extract_features(images)
         # print(features.shape)
         indexer.add(features)
     faiss.write_index(indexer, 'building.index.bin')
