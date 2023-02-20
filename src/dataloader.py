@@ -1,7 +1,7 @@
 from PIL import Image
 import pathlib
-from torchvision import transforms
 
+from torchvision import transforms
 from torch.utils.data import Dataset
 
 ACCEPTED_IMAGE_EXTS = ['.jpg', '.png']
@@ -19,8 +19,7 @@ def get_transformation():
     '''
     transform = transforms.Compose(
         [
-            transforms.Resize((256, 256), interpolation = transforms.InterpolationMode.BILINEAR),
-            transforms.CenterCrop((224, 224)),
+            transforms.Resize((224, 224), interpolation = transforms.InterpolationMode.BILINEAR),
             transforms.ToTensor(),
         ])
 
@@ -34,7 +33,7 @@ class MyDataLoader(Dataset):
         for image_path in self.image_root.iterdir():
             if image_path.exists() and image_path.suffix.lower() in ACCEPTED_IMAGE_EXTS:
                 self.image_list.append(image_path)
-        self.image_list = sorted(self.image_list, key = lambda x: int(x.name.split('.')[0].split('_')[1]))
+        self.image_list = sorted(self.image_list, key = lambda x: x.name)
         self.transform = get_transformation()
 
     def __len__(self):
