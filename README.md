@@ -13,7 +13,7 @@ This is a project we built for the subject CS336 - Multimedia Information Retrie
   <img src=diagram.png/>
 </p>
 
-The hand detect module we use the existing model of [victordibia](https://github.com/victordibia/handtracking) (SSD architecture). With the Stacked Hourglass Network, we implemented based on the work of [enghock1](https://github.com/enghock1/Real-Time-2D-and-3D-Hand-Pose-Estimation) and [princeton-vl](https://github.com/princeton-vl/pytorch_stacked_hourglass).
+We use the [faiss](https://github.com/facebookresearch/faiss.git) library created by facebook. The weights of the VGG16, Resnet50 networks are taken from the pre-trained model of [torchvision.models](https://pytorch.org/vision/stable/models.html).
 
 ## Prepare environment
 
@@ -22,24 +22,53 @@ The hand detect module we use the existing model of [victordibia](https://github
 
         conda install pytorch torchvision torchaudio pytorch-cuda=11.7 -c pytorch -c nvidia
         
-3. Install the necessary dependencies by running:
+3. Install Facebook faiss:
+
+        conda install -c conda-forge faiss-gpu
+        
+4. Install the necessary dependencies by running:
 
         pip install -r requirements.txt. 
 
 ## Prepare dataset
 
-Please organizing your datasets for training and testing following this structure: 
+Please organizing your dataset following this structure: 
 
 ```
 Main-folder/
 │
-├── data/ 
-│   ├── FreiHAND_pub_v2 - This folder contain data for training model
-|   |   ├── ...
+├── dataset/ 
+│   ├── evaluation
+|   |   ├── crop
+|   |   |   ├── LBP
+|   |   |   |   ├── defense_1.txt
+|   |   |   |   ├── eiffel_1.txt
+|   |   |   |   └── ...
+|   |   |   ├── Resnet50
+|   |   |   |   └── ...
+|   |   |   ├── RGBHistogram
+|   |   |   |   └── ...
+|   |   |   └── VGG16
+|   |   |       └── ...
+|   |   └── original
+|   |       └── ...
 |   |
-│   └── FreiHAND_pub_v2_eval - public test images
-|       ├── ...
-|
+│   ├── feature
+|   |   ├── LBP.index.bin
+|   |   ├── Resnet50.index.bin
+|   |   ├── RGBHistogram.index.bin
+|   |   └── VGG16.index.bin
+|   |   
+|   ├── groundtruth
+|   |   ├── defense_1_good.txt
+|   |   ├── eiffel_4_query.txt
+|   |   └── ...
+|   |
+|   └── paris
+|       ├── paris_defense_000000.jpg
+|       ├── paris_defense_000042.jpg
+|       └── ...
+|   
 └── ...
 ```
 
