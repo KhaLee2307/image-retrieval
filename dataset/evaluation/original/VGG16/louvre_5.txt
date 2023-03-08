@@ -1,0 +1,11 @@
+paris_louvre_000139
+paris_pantheon_001077
+paris_museedorsay_000904
+paris_sacrecoeur_000318
+paris_general_003055
+paris_museedorsay_000775
+paris_museedorsay_001112
+paris_sacrecoeur_000380
+paris_general_000002
+paris_defense_000589
+paris_general_001618

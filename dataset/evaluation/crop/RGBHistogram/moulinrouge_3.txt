@@ -1,0 +1,11 @@
+paris_louvre_000236
+paris_pompidou_000720
+paris_sacrecoeur_000389
+paris_invalides_000060
+paris_triomphe_000751
+paris_pompidou_000440
+paris_invalides_000754
+paris_sacrecoeur_000390
+paris_triomphe_000413
+paris_invalides_000136
+paris_defense_000090

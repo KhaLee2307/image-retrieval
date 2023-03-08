@@ -7,11 +7,12 @@ ACCEPTED_IMAGE_EXTS = ['.jpg', '.png']
 
 
 def main():
+
     parser = ArgumentParser()
-    parser.add_argument("--feature_extractor", required=True, type=str, default='VGG16')
+    parser.add_argument("--feature_extractor", required=True, type=str, default='Resnet50')
     parser.add_argument("--crop", required=False, type=bool, default=False)
 
-    print('Ranking .......')
+    print('Start evaluating .......')
     start = time.time()
 
     args = parser.parse_args()

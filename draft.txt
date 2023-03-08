@@ -1,0 +1,8 @@
+python==3.8.16
+conda install pytorch torchvision torchaudio pytorch-cuda=11.7 -c pytorch -c nvidia
+conda install -c conda-forge faiss-gpu
+
+opencv-python
+scikit-image
+streamlit
+streamlit-cropper
