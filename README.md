@@ -6,8 +6,11 @@ This is a project we built for the subject CS336 - Multimedia Information Retrie
 
 **Problem**
 
+  - **Input**: A collection of information resources (image database), a query image
+  - **Output**: A ranked list of images that are most similar to the query image, with the most similar image at the top of the list
+
 <p align="center">
-  <img src=method.png/>
+  <img src=diagram.png/>
 </p>
 
 The hand detect module we use the existing model of [victordibia](https://github.com/victordibia/handtracking) (SSD architecture). With the Stacked Hourglass Network, we implemented based on the work of [enghock1](https://github.com/enghock1/Real-Time-2D-and-3D-Hand-Pose-Estimation) and [princeton-vl](https://github.com/princeton-vl/pytorch_stacked_hourglass).
