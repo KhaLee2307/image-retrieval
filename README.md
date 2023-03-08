@@ -90,18 +90,14 @@ Evaluation on query set
 
     python ranking.py --feature_extractor Resnet50
     
-### Real-time hand pose estimation
+### Compute Mean Average Precision (MAP):
 
-Prepare camera and clear angle, good light, less noisy space. Run the following command line:
-
-    python 3.real_time_2D_hand_pose_estimation.py --config-file "configs/eval_webcam.yaml"
+    python evaluate.py --feature_extractor Resnet50
     
-_Note: Our model only solves the one-handed recognition problem. If there are 2 or more hands, the model will randomly select one hand to predict. To predict multiple hands, please edit the file 3.real_time_2D_hand_pose_estimation.py (because of resource and time limitations, we don't do this part)._
+### Run demo with streamlit interface:
 
-### Addition
+    streamlit run demo.py
+    
+### Addition 
 
-To fine-tune the hyperparameters (BATCH_SIZE, NUM_WORKERS, DATA_SIZE, ...), you can edit the .yaml files in the **./configs/** directory.
-
-## Citation
-
-Newell, Alejandro & Yang, Kaiyu & Deng, Jia. (2016). [Stacked Hourglass Networks for Human Pose Estimation](https://arxiv.org/pdf/1603.06937.pdf). 9912. 483-499. 10.1007/978-3-319-46484-8_29.
+You can modify the config like feature_extractor (RGBHistogram, LBP, VGG16, Resnet50), batch_size, top_k, ...
