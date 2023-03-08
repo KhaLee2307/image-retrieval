@@ -32,6 +32,10 @@ We use the [faiss](https://github.com/facebookresearch/faiss.git) library create
 
 ## Prepare dataset
 
+1. Put the downloaded [The Paris Dataset](https://www.robots.ox.ac.uk/~vgg/data/parisbuildings/) in **./data/paris**
+
+2. Put the downloaded [groundtruth](https://www.robots.ox.ac.uk/~vgg/data/parisbuildings/) in **./data/groundtruth**
+
 Please organizing your dataset following this structure: 
 
 ```
@@ -72,31 +76,20 @@ Main-folder/
 └── ...
 ```
 
-1. Put the downloaded [FreiHAND](https://github.com/lmb-freiburg/freihand) dataset in **./data/**
-
-Link: https://lmb.informatik.uni-freiburg.de/data/freihand/FreiHAND_pub_v2.zip
-
-2. Put the downloaded [FreiHAND](https://github.com/lmb-freiburg/freihand) evaluation set in **./data/**
-
-Link: https://lmb.informatik.uni-freiburg.de/data/freihand/FreiHAND_pub_v2_eval.zip
-
 ## Running the code
 
-### Training
-In this project, we focus on training Stacked Hourglass Network. As for the hand detect module, we reuse the victordibia's pretrained_model (SSD) without further modified. Train the hourglass network:
+### Feature extraction (Indexing)
 
-    python 1.train.py --config-file "configs/train_FreiHAND_dataset.yaml"
+    python indexing.py --feature_extractor Resnet50
     
-The trained model weights (net_hm.pth) will be located at **Main-folder/**. Simply copy and paste the trained model into **./model/trained_models** before evaluate.
+The Resnet50.index.bin file will be located at **Main-folder/dataset/feature**.
 
 ### Evaluation
 
-Evaluate on FreiHAND dataset:
+Evaluation on query set
 
-    python 2.evaluate_FreiHAND.py --config-file "configs/eval_FreiHAND_dataset.yaml"
+    python ranking.py --feature_extractor Resnet50
     
-The visualization results will be saved to **./output/**
-
 ### Real-time hand pose estimation
 
 Prepare camera and clear angle, good light, less noisy space. Run the following command line:
