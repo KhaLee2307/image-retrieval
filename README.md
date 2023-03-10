@@ -1,5 +1,9 @@
 # Content-Based Image Retrieval
 
+<p align="center">
+  <img src=demo.gif/>
+</p>
+
 ## Introduction
 
 This is a project we built for the subject CS336 - Multimedia Information Retrieval (University of Information Technology - VNUHCM). In this project, we use the algorithm of indexing and searching Faiss (Facebook). Simultaneously combine many feature extraction methods for comparison and evaluation (RGBHistogram, Local Binary Pattern, VGG16, ResNet50).
