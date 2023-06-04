@@ -32,7 +32,7 @@ I use the [faiss](https://github.com/facebookresearch/faiss.git) library created
         
 4. Install the necessary dependencies by running:
 
-        pip install -r requirements.txt. 
+        pip install -r requirements.txt
 
 ## Prepare dataset
 
