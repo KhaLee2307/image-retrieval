@@ -36,7 +36,7 @@ I use the [faiss](https://github.com/facebookresearch/faiss.git) library created
 
 ## Prepare dataset
 
-1. Put the downloaded [The Paris Dataset](https://www.robots.ox.ac.uk/~vgg/data/parisbuildings/) in **./data/paris**
+1. Put the downloaded [The Paris Dataset](https://www.robots.ox.ac.uk/~vgg/data/parisbuildings/) (or link [Kaggle](https://www.kaggle.com/datasets/skylord/oxbuildings?select=paris_2.tgz)) in **./data/paris**
 
 2. Put the downloaded [groundtruth](https://www.robots.ox.ac.uk/~vgg/data/parisbuildings/) in **./data/groundtruth**
 
