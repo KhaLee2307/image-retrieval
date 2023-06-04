@@ -36,7 +36,7 @@ I use the [faiss](https://github.com/facebookresearch/faiss.git) library created
 
 ## Prepare dataset
 
-1. Put the downloaded [The Paris Dataset](https://www.robots.ox.ac.uk/~vgg/data/parisbuildings/) in **./data/paris**
+1. Put the downloaded [The Paris Dataset](https://www.robots.ox.ac.uk/~vgg/data/parisbuildings/) (or link [Kaggle](https://www.kaggle.com/datasets/skylord/oxbuildings?select=paris_2.tgz)) in **./data/paris**
 
 2. Put the downloaded [groundtruth](https://www.robots.ox.ac.uk/~vgg/data/parisbuildings/) in **./data/groundtruth**
 
@@ -105,3 +105,18 @@ Evaluation on query set
 ### Addition 
 
 You can modify the config like feature_extractor (RGBHistogram, LBP, VGG16, Resnet50), batch_size, top_k, ...
+
+## Reference
+
+```
+@article{johnson2019billion,
+  title={Billion-scale similarity search with {GPUs}},
+  author={Johnson, Jeff and Douze, Matthijs and J{\'e}gou, Herv{\'e}},
+  journal={IEEE Transactions on Big Data},
+  volume={7},
+  number={3},
+  pages={535--547},
+  year={2019},
+  publisher={IEEE}
+}
+```
