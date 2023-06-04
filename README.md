@@ -105,3 +105,18 @@ Evaluation on query set
 ### Addition 
 
 You can modify the config like feature_extractor (RGBHistogram, LBP, VGG16, Resnet50), batch_size, top_k, ...
+
+## Reference
+
+```
+@article{johnson2019billion,
+  title={Billion-scale similarity search with {GPUs}},
+  author={Johnson, Jeff and Douze, Matthijs and J{\'e}gou, Herv{\'e}},
+  journal={IEEE Transactions on Big Data},
+  volume={7},
+  number={3},
+  pages={535--547},
+  year={2019},
+  publisher={IEEE}
+}
+```
