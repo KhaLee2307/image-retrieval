@@ -1,4 +1,0 @@
-opencv-python
-scikit-image
-streamlit
-streamlit-cropper
