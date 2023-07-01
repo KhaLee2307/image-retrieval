@@ -17,12 +17,12 @@ This is my project built for the Content-based Image Retrieval problem. In this 
   <img src=diagram.png/>
 </p>
 
-I use the [faiss](https://github.com/facebookresearch/faiss.git) library created by facebook. The weights of the VGG16, Resnet50 networks are taken from the pre-trained model of [torchvision.models](https://pytorch.org/vision/stable/models.html).
+I use the [faiss](https://github.com/facebookresearch/faiss.git) library created by Facebook. The weights of the VGG16 and Resnet50 networks are taken from the pre-trained model of [torchvision.models](https://pytorch.org/vision/stable/models.html).
 
-## Prepare environment
+## Prepare the environment
 
 1. python==3.8.16
-2. Install pytorch-cuda==11.7 following [official instruction](https://pytorch.org/):
+2. Install PyTorch-cuda==11.7 following [official instruction](https://pytorch.org/):
 
         conda install pytorch torchvision torchaudio pytorch-cuda=11.7 -c pytorch -c nvidia
         
@@ -34,13 +34,13 @@ I use the [faiss](https://github.com/facebookresearch/faiss.git) library created
 
         pip install -r requirements.txt
 
-## Prepare dataset
+## Prepare the dataset
 
 1. Put the downloaded [The Paris Dataset](https://www.robots.ox.ac.uk/~vgg/data/parisbuildings/) (or link [Kaggle](https://www.kaggle.com/datasets/skylord/oxbuildings?select=paris_2.tgz)) in **./data/paris**
 
 2. Put the downloaded [groundtruth](https://www.robots.ox.ac.uk/~vgg/data/parisbuildings/) in **./data/groundtruth**
 
-Please organizing your dataset following this structure: 
+Please organize your dataset following this structure: 
 
 ```
 Main-folder/
@@ -86,7 +86,7 @@ Main-folder/
 
     python indexing.py --feature_extractor Resnet50
     
-The Resnet50.index.bin file will be located at **Main-folder/dataset/feature**.
+The Resnet50.index.bin file will be at **Main-folder/dataset/feature**.
 
 ### Evaluation
 
